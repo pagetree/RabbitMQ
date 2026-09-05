@@ -23,8 +23,10 @@ Click the button, wait for the build to finish, then open the generated domain. 
 | `RABBITMQ_DEFAULT_PASS` | Generated password |
 | `RABBITMQ_HOST` | Private network hostname |
 | `RABBITMQ_PORT` | AMQP port (`5672`) |
+| `RABBITMQ_MANAGEMENT_PORT` | Management UI port (`15672`) |
 | `RABBITMQ_URL` | Full AMQP connection string |
 | `RABBITMQ_MANAGEMENT_URL` | Public Management UI URL |
+| `RABBITMQ_NODENAME` | Pinned to `rabbit@localhost` so the volume survives redeploys |
 
 ## Connecting
 
