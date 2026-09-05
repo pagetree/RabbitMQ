@@ -1,6 +1,10 @@
-# RabbitMQ — One Click
+# RabbitMQ One Click
 
 > Deploy a fully configured RabbitMQ message broker with Management UI on Railway in one click.
+
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/rabbitmq-one-click)
+
+Template page: https://railway.com/deploy/rabbitmq-one-click
 
 ## What you get
 
@@ -13,7 +17,7 @@
 
 ## Deploy
 
-Click the button, wait for the build to finish, then open the generated domain. RabbitMQ is ready immediately, no variables to fill in.
+Click the button. Do not fill in any variables. Wait for RabbitMQ to start, then open the generated domain.
 
 ## Variables (generated automatically)
 
@@ -22,24 +26,24 @@ Click the button, wait for the build to finish, then open the generated domain. 
 | `RABBITMQ_DEFAULT_USER` | Generated username |
 | `RABBITMQ_DEFAULT_PASS` | Generated password |
 | `RABBITMQ_HOST` | Private network hostname |
-| `RABBITMQ_PORT` | AMQP port (`5672`) |
-| `RABBITMQ_MANAGEMENT_PORT` | Management UI port (`15672`) |
 | `RABBITMQ_URL` | Full AMQP connection string |
 | `RABBITMQ_MANAGEMENT_URL` | Public Management UI URL |
-| `RABBITMQ_NODENAME` | Pinned to `rabbit@localhost` so the volume survives redeploys |
+| `RABBITMQ_NODENAME` | Pinned so the volume survives redeploys |
+
+AMQP listens on `5672`. The Management UI listens on `15672`.
 
 ## Connecting
 
-From another service in the same Railway project, over the private network:
-
-```text
-amqp://user:pass@rabbitmq.railway.internal:5672
-```
-
-Or just reference the generated variable directly in your app:
+From another service in the same Railway project:
 
 ```text
 ${{ RabbitMQ.RABBITMQ_URL }}
+```
+
+That resolves to an AMQP URL on the private network, for example:
+
+```text
+amqp://user:pass@rabbitmq.railway.internal:5672
 ```
 
 ## Data persistence
